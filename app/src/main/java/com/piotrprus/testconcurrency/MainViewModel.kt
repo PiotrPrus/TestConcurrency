@@ -136,7 +136,8 @@ class MainViewModel : ViewModel() {
         variableB.toIntOrNull()?.let { executeB(it) }
     }
 
-    fun setThreadPoolClicked(threads: Int) {
+    fun setThreadPoolClicked(seekBarValue: Int) {
+        val threads = if (seekBarValue == 0) 1 else seekBarValue
         customExecutor = Executors.newFixedThreadPool(threads).asCoroutineDispatcher()
     }
 

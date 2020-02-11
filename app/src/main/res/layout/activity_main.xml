@@ -30,10 +30,10 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            app:isVisible="@{viewModel.tasksInProgress}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            app:isVisible="@{viewModel.tasksInProgress}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -73,8 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="RUN A"
             android:onClick="@{() -> viewModel.onAButtonClicked(variableA)}"
+            android:text="RUN A"
             app:layout_constraintEnd_toEndOf="@+id/inputA"
             app:layout_constraintStart_toStartOf="@+id/inputA"
             app:layout_constraintTop_toBottomOf="@+id/inputA" />
@@ -83,8 +83,8 @@
             android:id="@+id/buttonB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RUN B"
             android:onClick="@{() -> viewModel.onBButtonClicked(variableB)}"
+            android:text="RUN B"
             app:layout_constraintBottom_toBottomOf="@+id/buttonA"
             app:layout_constraintEnd_toEndOf="@+id/inputB"
             app:layout_constraintStart_toStartOf="@+id/inputB" />
@@ -94,11 +94,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{`Number of used threads: ` + (threads ?? 1)}"
-            tools:text="Number of used threads: 1"
+            android:text="@{`Number of used threads: ` + (threads == 0 ? `1` : threads)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonA" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonA"
+            tools:text="Number of used threads: 1" />
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -119,9 +119,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:enabled="@{!viewModel.tasksInProgress}"
             android:onClick="@{() -> viewModel.setThreadPoolClicked(threads)}"
             android:text="set"
-            android:enabled="@{!viewModel.tasksInProgress}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -129,8 +129,8 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel A"
             android:onClick="@{() -> viewModel.onCancelAClicked()}"
+            android:text="Cancel A"
             app:layout_constraintBottom_toBottomOf="@+id/button5"
             app:layout_constraintEnd_toEndOf="@+id/buttonA"
             app:layout_constraintStart_toStartOf="@+id/buttonA"
@@ -141,8 +141,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Cancel B"
             android:onClick="@{() -> viewModel.onCancelBClicked()}"
+            android:text="Cancel B"
             app:layout_constraintEnd_toEndOf="@+id/buttonB"
             app:layout_constraintStart_toStartOf="@+id/buttonB"
             app:layout_constraintTop_toBottomOf="@+id/button3" />
